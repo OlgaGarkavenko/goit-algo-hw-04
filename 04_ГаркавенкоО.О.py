@@ -1,7 +1,7 @@
 import os
 import shutil
 import argparse
-import turtle
+
 
 # Ex 1
 def create_test_data(base_path: str):
@@ -97,53 +97,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# 2
-
-
-def koch_curve(t, length, order):
-  
-    if order == 0:
-        t.forward(length)
-    else:
-        length /= 3.0
-        koch_curve(t, length, order - 1)
-        t.left(60)
-        koch_curve(t, length, order - 1)
-        t.right(120)
-        koch_curve(t, length, order - 1)
-        t.left(60)
-        koch_curve(t, length, order - 1)
-
-
-def snowflake(t, length, order):
-   
-    for _ in range(3):
-        koch_curve(t, length, order)
-        t.right(120)
-
-
-def main():
-    # Ввід рівня рекурсії
-    level = int(input("Введіть рівень рекурсії (0–6 рекомендується): "))
-
-    # Налаштування вікна
-    screen = turtle.Screen()
-    screen.bgcolor("white")
-    screen.title("Сніжинка Коха")
-
-    # Налаштування черепашки
-    t = turtle.Turtle()
-    t.speed(0)
-    t.penup()
-    t.goto(-150, 100)
-    t.pendown()
-
-    # Малювання
-    snowflake(t, 300, level)
-
-    t.hideturtle()
-    turtle.done()
-
-
-if __name__ == "__main__":
-    main()
